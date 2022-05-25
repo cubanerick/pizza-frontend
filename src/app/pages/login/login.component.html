@@ -1,0 +1,38 @@
+<style>
+    form {
+        max-width: fit-content;
+        margin: 0 auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    label {
+        font-weight: 700;
+        font-size: large;
+        margin-bottom: 5px;
+        margin-right: 10px;
+    }
+    
+    button {
+        margin-right: 20px;
+        background-color: #B36732;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 25px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #87471c;
+    }
+</style>
+<form [formGroup]="credentialsGroup" (ngSubmit)="login()">
+    <label for="usernameControl">Username:</label>
+    <input id="usernameControl" type="text" formControlName="usernameControl">
+    <br><br>
+    <label for="passwordControl">Password:</label>
+    <input id="passwordControl" type="text" formControlName="passwordControl">
+    <br><br>
+    <button type="submit"> Log in </button>
+</form>

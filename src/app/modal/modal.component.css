@@ -1,0 +1,45 @@
+.modal_outer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);;
+}
+
+.modal_inner {
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.closeBtn {
+    cursor: pointer;
+    background-color: #B36732;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin-top: 20px;
+}
+
+.orderBox p{
+    display: inline-block;
+    margin: 10px 0px;
+}
+
+.label {
+    font-weight: 700;
+    font-size: large;
+}
+
+.main-label {
+    font-weight: 700;
+    font-size: x-large;
+}

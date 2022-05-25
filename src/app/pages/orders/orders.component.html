@@ -1,0 +1,108 @@
+<style>
+    .orders_outer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        height: 100%;
+        padding: 60px 20px;
+        padding-top: 0;
+        background-color: #efd6a8;
+    }
+    .orders_card {
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    button {
+        margin-right: 20px;
+        background-color: #B36732;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 25px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #87471c;
+    }
+
+    .filterForm {
+        width: 100%;
+        display:flex;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between;
+        margin-top: 20px;
+        background-color: white;
+        padding: 10px;
+        padding-top: 20px;
+        border-radius: 10px;
+    }
+    .filterForm select {
+        margin-bottom: 10px;
+        font-size: large;
+    }
+    .filterForm label {
+        margin-bottom: 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+        font-size: large;
+        font-weight: 700;
+    }
+    .filterForm button {
+        margin-bottom: 10px;
+    }
+</style>
+<div class="orders_outer">
+    <form class="filterForm" [formGroup]="filterGroup" (ngSubmit)="filterOrders()">
+        <div>
+            <label for="crustControl">Crust:</label>
+            <select id="crustControl" formControlName="crustControl"  name="crustControl">
+                <option *ngFor="let crust of crusts" [ngValue]="crust">
+                    {{ crust.name }}
+                </option>
+                
+            </select>
+        </div>
+        <div>
+            <label for="flavorControl">Flavor:</label>
+            <select id="flavorControl" formControlName="flavorControl" name="flavorControl">
+                <option *ngFor="let flavor of flavors" [ngValue]="flavor">
+                    {{ flavor.name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="sizeControl">Size:</label>
+            <select id="sizeControl" formControlName="sizeControl" name="sizeControl">
+                <option *ngFor="let size of sizes" [ngValue]="size">
+                    {{ size.name }}
+                </option>
+            </select>
+        </div>
+        <div>
+            <label for="tableNumberControl">Table Number:</label>
+            <select id="tableNumberControl" formControlName="tableNumberControl" name="tableNumberControl">
+                <option *ngFor="let table of tables" [ngValue]="table">
+                    {{ table.name }}
+                </option>
+            </select>
+        </div>
+        <br>
+        <button type="submit">Filter Orders</button>
+    </form>
+    <div class="orders_card" *ngFor="let order of orders">
+        <h2><strong>Order ID:</strong> {{order.Order_ID}}</h2>
+        <p><strong>Crust:</strong> {{order.Crust}}</p>
+        <p><strong>Flavor:</strong> {{order.Flavor}}</p>
+        <p><strong>Size:</strong> {{order.Size}}</p>
+        <p><strong>Table Number:</strong> {{order.Table_No}}</p>
+        <br>
+        <button (click)="deletePizzaOrder(order.Order_ID.toString())" class="orders_btn">Delete Order</button>
+    </div>
+</div>

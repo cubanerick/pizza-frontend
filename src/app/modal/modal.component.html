@@ -1,0 +1,25 @@
+<div class="modal_outer">
+    <div class="modal_inner">
+        <div class="orderBox" *ngIf="order.Crust;else other_content" >
+            <p class="main-label">Order Confirmed</p>
+            <br>
+            <p class="label">Crust:</p>
+            <p>{{order.Crust}}</p>
+            <br>
+            <p class="label">Flavor:</p>
+            <p>{{order.Flavor}}</p>
+            <br>
+            <p class="label">Size:</p>
+            <p>{{order.Size}}</p>
+            <br>
+            <p class="label">Table Number:</p>
+            <p>{{order.Table_No}}</p>
+            <br>
+            <button (click)="closeModal()" class="closeBtn">Close</button>
+        </div>
+        <ng-template class="errorBox" #other_content>
+            <p>There was an error processing the order. Please login and try again</p>
+            <a href="/login">Login</a>
+        </ng-template>
+    </div>
+</div>

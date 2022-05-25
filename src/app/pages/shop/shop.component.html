@@ -1,0 +1,58 @@
+<style>
+    form {
+        max-width: fit-content;
+        margin: 0 auto;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    label {
+        font-weight: 700;
+        font-size: large;
+        margin-bottom: 5px;
+        margin-right: 10px;
+    }
+    
+    button {
+        margin-right: 20px;
+        background-color: #B36732;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 25px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #87471c;
+    }
+</style>
+<form [formGroup]="pizzaOrderGroup" (ngSubmit)="submitOrder()">
+    <label for="crustControl">Crust:</label>
+    <select id="crustControl" formControlName="crustControl"  name="crustControl">
+        <option *ngFor="let crust of crusts" [ngValue]="crust">
+            {{ crust.name }}
+        </option>
+        
+    </select>
+    <br><br>
+    <label for="flavorControl">Flavor:</label>
+    <select id="flavorControl" formControlName="flavorControl" name="flavorControl">
+        <option *ngFor="let flavor of flavors" [ngValue]="flavor">
+            {{ flavor.name }}
+        </option>
+    </select>
+    <br><br>
+    <label for="sizeControl">Size:</label>
+    <select id="sizeControl" formControlName="sizeControl" name="sizeControl">
+        <option *ngFor="let size of sizes" [ngValue]="size">
+            {{ size.name }}
+        </option>
+    </select>
+    <br><br>
+    <label for="tableNumberControl">Table Number:</label>
+    <input id="tableNumberControl" min="0" max="15" type="number" formControlName="tableNumberControl">
+    <br><br>
+    <button type="submit"> ORDER NOW </button>
+</form>
+<app-modal [closeModal]="closeModal" [order]="newOrder" *ngIf="displayModal"></app-modal>
